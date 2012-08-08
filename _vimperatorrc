@@ -1,0 +1,131 @@
+"3.4 (created: 2012/04/02 20:07:29)
+
+source! /Users/shrimp_yfa54/.vimperatorrc.local
+
+" vim: set ft=vimperator:
+
+
+"----------------------------------------
+" ここからコピペ
+"----------------------------------------
+
+"カラースキーマ
+colorscheme ytebine07
+
+"hintの文字列を変更
+set hintchars=ik;onhu
+
+"ページロード時にフォーカスを奪われない
+set focuscontent
+
+" :open / :topen 時のURL補完にSmartlocationbarの結果を利用する
+set complete=l
+
+"hintモードの時に半角強制
+:style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
+
+
+"デフォルト検索エンジンをY!へ
+bmark -title="Yahoo! Search" -tags=keyword -keyword=y http://search.yahoo.co.jp/search?p=%s
+set defsearch=y
+
+"Yahoo!オークションもすぐ検索したい
+bmark -title="[Vimperator]Yahoo!Auction" -tags=keyword -keyword=auc http://auctions.search.yahoo.co.jp/search?p=%s&tab_ex=commerce
+
+"Yahoo!ショッピングもすぐ検索したい
+bmark -title="[Vimperator]Yahoo!Shopping" -tags=keyword -keyword=shop http://shopping.search.yahoo.co.jp/search?p=%s&tab_ex=commerce
+
+"Amazonもすぐ検索したい
+bmark -title="[Vimperator]Amazon" -tags=keyword -keyword=amazon http://www.amazon.co.jp/gp/search/?__mk_ja_JP=%83J%83%5E%83J%83i&field-keywords=%s
+
+" URL内の数字をいじる
+mapc +
+mapc -
+noremap ++ <C-a>
+noremap -- <C-x>
+
+" Windowsコマンドでコピペ系設定
+noremap  <C-a> <S-Esc><C-a><S-Esc>
+inoremap <C-a> <S-Esc><C-a><S-Esc>
+cnoremap <C-a> <S-Esc><C-a><S-Esc>
+noremap  <C-c> <S-Esc><C-c><S-Esc>
+inoremap <C-c> <S-Esc><C-c><S-Esc>
+cnoremap <C-c> <S-Esc><C-c><S-Esc>
+noremap  <C-x> <S-Esc><C-x><S-Esc>
+inoremap <C-x> <S-Esc><C-x><S-Esc>
+cnoremap <C-x> <S-Esc><C-x><S-Esc>
+noremap  <C-v> <S-Esc><C-v><S-Esc>
+inoremap <C-v> <S-Esc><C-v><S-Esc>
+cnoremap <C-v> <S-Esc><C-v><S-Esc>
+noremap  <C-z> <S-Esc><C-z><S-Esc>
+inoremap <C-z> <S-Esc><C-z><S-Esc>
+cnoremap <C-z> <S-Esc><C-z><S-Esc>
+
+"インサートモードでの移動系マッピング
+imap <C-h> <LEFT>
+imap <C-j> <DOWN>
+imap <C-k> <UP>
+imap <C-l> <RIGHT>
+imap <C-g> <HOME>
+imap <C-;> <END>
+"imap <C-d> <S-END><C-x>
+imap  <C-d> <S-END><DEL>
+
+"backspaceが遠い
+imap <C-b> <BS>
+imap <C-u> <BS>
+
+"ショートカットではプリントはしない
+imap <C-p> <nop>
+
+"insertモードで<C-n>しても、次のタブへ移動
+inoremap   <C-n> <C-Tab>
+
+"キャレットの幅を広げて、見失わないようにする
+set! ui.caretWidth=5
+
+"ビジュアルモード時<Enter>でコピー完了
+vmap <CR> <C-c><Esc><Esc>
+
+"=============================================
+" Firefox Config
+"=============================================
+" ダウンロードウィンドウを完了後自動で閉じる
+set! browser.download.manager.closeWhenDone=true
+" ダウンロード履歴をFirefox終了時に削除
+set! browser.download.manager.retention=1
+" ダウンロードウィンドウを完了後自動で閉じる
+set! browser.download.manager.closeWhenDone=true
+" ファイルダウンロード完了時のウイルススキャン機能オフ
+set! browser.download.manager.scanWhenDone=false
+
+
+"------------------------------------------------------
+"vimparatorrcをコマンドで再読み込み
+"------------------------------------------------------
+javascript <<EOF
+commands.addUserCommand( ['rec[onfig]'], 'reload vimperatorrc',
+	function () {
+		//設定してあるマッピングを削除
+		mappings.removeAll( modes.NORMAL );
+		mappings.removeAll( modes.INSERT );
+		mappings.removeAll( modes.HINTS );
+
+		//設定してあるコマンドを削除
+		commands.getUserCommands().forEach(function(cmd){
+			commands.removeUserCommand(cmd.name);
+		});
+
+		//vimperatorrcを読み込み
+		io.source('~/_vimperatorrc', false);
+
+		//プラグインの読み込み
+		let dir = io.File('~/vimperator/plugin/');
+		dir.readDirectory(true).forEach(function(file){
+			io.source(file.path,	false);
+		});
+	}
+);
+EOF
+
+echo "設定再読み込み完了"
