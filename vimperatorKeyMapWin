@@ -1,0 +1,14 @@
+/*
+Key map setting for Win.
+
+vimperatorKeyMapForWin
+*/
+
+"行の先頭に移動
+imap <C-g>  <HOME>
+
+"行の最後に移動
+imap <C-;>  <END>
+
+"カーソルから後ろを削除
+imap <C-d>  <S-END><DEL>
