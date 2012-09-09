@@ -1,8 +1,5 @@
 " vim: set ft=vimperator:
 
-"----------------------------------------
-" ここからコピペ
-"----------------------------------------
 javascript <<EOF
 
 if( liberator.has( "MacUnix" ) ){
@@ -44,9 +41,13 @@ set focuscontent
 " :open / :topen 時のURL補完にSmartlocationbarの結果を利用する
 set complete=l
 
-"hintモードの時に半角強制
+"コマンドラインモードに入るとき、自動的にIMEをOFF
 :style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 
+"インサートモードに入るとき、自動的にIMEをOFF
+"を実現したいが、やり方がわからないので、
+"[input要素に入るとき、強制的にIMEをOFF]にしてます。
+:style -name insert-ime * input {ime-mode: inactive !important;}
 
 "デフォルト検索エンジンをY!へ
 bmark -title="Yahoo! Search" -tags=keyword -keyword=y http://search.yahoo.co.jp/search?p=%s
