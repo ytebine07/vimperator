@@ -62,6 +62,9 @@ bmark -title="[Vimperator]Yahoo!Shopping" -tags=keyword -keyword=shop http://sho
 "Amazonもすぐ検索したい
 bmark -title="[Vimperator]Amazon" -tags=keyword -keyword=amazon http://www.amazon.co.jp/gp/search/?__mk_ja_JP=%83J%83%5E%83J%83i&field-keywords=%s
 
+"自分のgithubレポジトリへすぐ移動したい
+bmark -title="[Vimperator]github" -tags=keyword -keyword=github https://github.com/ytebine07
+
 " URL内の数字をいじる
 mapc +
 mapc -
