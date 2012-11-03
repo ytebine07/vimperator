@@ -1,13 +1,33 @@
-"3.4 (created: 2012/04/02 20:07:29)
-
-source! /Users/shrimp_yfa54/.vimperatorrc.local
-
 " vim: set ft=vimperator:
 
+javascript <<EOF
 
-"----------------------------------------
-" ここからコピペ
-"----------------------------------------
+if( liberator.has( "MacUnix" ) ){
+    liberator.log( "macccccccccc", -1 );
+
+    //設定ファイルのパス
+    liberator.globalVariables.VimpSetiingFilePath='~/.vimperatorrc';
+
+    //プラグインのパス
+    liberator.globalVariables.VimpSettingPluginPath='~/.vimperator/plugin/';
+
+    //キーマップ設定ファイルのパス
+    liberator.globalVariables.aliasFilePath='~/.vimperator/vimperatorKeyMapMac';
+
+}else if( liberator.has( "Win32" ) ){
+    liberator.log.( "Window!",      -1 );
+    
+    //設定ファイルのパス
+    liberator.globalVariables.VimpSetiingFilePath='~/_vimperatorrc';
+
+    //プラグインのパス
+    liberator.globalVariables.VimpSettingPluginPath='~/vimperator/plugin/'
+
+    //キーマップ設定ファイルのパス
+    liberator.globalVariables.aliasFilePath='~/vimperator/vimperatorKeyMapWin';
+
+}
+EOF
 
 "カラースキーマ
 colorscheme ytebine07
@@ -21,9 +41,13 @@ set focuscontent
 " :open / :topen 時のURL補完にSmartlocationbarの結果を利用する
 set complete=l
 
-"hintモードの時に半角強制
+"コマンドラインモードに入るとき、自動的にIMEをOFF
 :style -name commandline-ime chrome://* #liberator-commandline-command input {ime-mode: inactive;}
 
+"インサートモードに入るとき、自動的にIMEをOFF
+"を実現したいが、やり方がわからないので、
+"[input要素に入るとき、強制的にIMEをOFF]にしてます。
+:style -name insert-ime * input {ime-mode: inactive !important;}
 
 "デフォルト検索エンジンをY!へ
 bmark -title="Yahoo! Search" -tags=keyword -keyword=y http://search.yahoo.co.jp/search?p=%s
@@ -66,13 +90,12 @@ imap <C-h> <LEFT>
 imap <C-j> <DOWN>
 imap <C-k> <UP>
 imap <C-l> <RIGHT>
-imap <C-g> <HOME>
-imap <C-;> <END>
-"imap <C-d> <S-END><C-x>
-imap  <C-d> <S-END><DEL>
+
+javascript <<EOF
+    io.source( liberator.globalVariables.aliasFilePath );
+EOF
 
 "backspaceが遠い
-imap <C-b> <BS>
 imap <C-u> <BS>
 
 "ショートカットではプリントはしない
@@ -85,7 +108,10 @@ inoremap   <C-n> <C-Tab>
 set! ui.caretWidth=5
 
 "ビジュアルモード時<Enter>でコピー完了
+"win用
 vmap <CR> <C-c><Esc><Esc>
+"Mac用
+vmap <CR> <M-c><Esc><Esc>
 
 "=============================================
 " Firefox Config
@@ -117,15 +143,16 @@ commands.addUserCommand( ['rec[onfig]'], 'reload vimperatorrc',
 		});
 
 		//vimperatorrcを読み込み
-		io.source('~/_vimperatorrc', false);
-
+        let vimprPath = liberator.globalVariables.VimpSetiingFilePath
+        io.source(vimprPath, false);
+        
 		//プラグインの読み込み
-		let dir = io.File('~/vimperator/plugin/');
-		dir.readDirectory(true).forEach(function(file){
+        let dir = io.File(liberator.globalVariables.VimpSettingPluginPath);
+        dir.readDirectory(true).forEach(function(file){
 			io.source(file.path,	false);
 		});
 	}
 );
 EOF
 
-echo "設定再読み込み完了"
+echo "* Setting Load Complete! *"

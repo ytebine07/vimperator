@@ -1,0 +1,14 @@
+/*
+Key map setting for Mac.
+
+vimperatorKeyMapForMac
+*/
+
+"行の先頭に移動
+imap <C-g>  <M-LEFT>
+
+"行の最後に移動
+imap <C-;>  <M-RIGHT>
+
+"カーソルから後ろを削除
+imap <C-d>  <S-M-Right><Del>
