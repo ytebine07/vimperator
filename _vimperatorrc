@@ -81,9 +81,9 @@ cnoremap <C-c> <S-Esc><C-c><S-Esc>
 noremap  <C-x> <S-Esc><C-x><S-Esc>
 inoremap <C-x> <S-Esc><C-x><S-Esc>
 cnoremap <C-x> <S-Esc><C-x><S-Esc>
-noremap  <C-v> <S-Esc><C-v><S-Esc>
-inoremap <C-v> <S-Esc><C-v><S-Esc>
-cnoremap <C-v> <S-Esc><C-v><S-Esc>
+noremap  <C-v> <S-Insert>
+inoremap <C-v> <S-Insert>
+cnoremap <C-v> <S-Insert>
 noremap  <C-z> <S-Esc><C-z><S-Esc>
 inoremap <C-z> <S-Esc><C-z><S-Esc>
 cnoremap <C-z> <S-Esc><C-z><S-Esc>
