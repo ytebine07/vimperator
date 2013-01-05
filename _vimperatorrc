@@ -1,8 +1,7 @@
-" vim: set ft=vimperator:
+﻿" vim: set ft=vimperator:
 
 javascript <<EOF
-
-if( liberator.has( "MacUnix" ) ){
+if( liberator.has( 'MacUnix' ) ){
     liberator.log( "macccccccccc", -1 );
 
     //設定ファイルのパス
@@ -13,15 +12,13 @@ if( liberator.has( "MacUnix" ) ){
 
     //キーマップ設定ファイルのパス
     liberator.globalVariables.aliasFilePath='~/.vimperator/vimperatorKeyMapMac';
+}else if( liberator.has('Windows') === true ){
 
-}else if( liberator.has( "Win32" ) ){
-    liberator.log.( "Window!",      -1 );
-    
     //設定ファイルのパス
     liberator.globalVariables.VimpSetiingFilePath='~/_vimperatorrc';
 
     //プラグインのパス
-    liberator.globalVariables.VimpSettingPluginPath='~/vimperator/plugin/'
+    liberator.globalVariables.VimpSettingPluginPath='~/vimperator/plugin/';
 
     //キーマップ設定ファイルのパス
     liberator.globalVariables.aliasFilePath='~/vimperator/vimperatorKeyMapWin';
