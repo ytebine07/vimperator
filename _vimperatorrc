@@ -2,7 +2,6 @@
 
 javascript <<EOF
 if( liberator.has( 'MacUnix' ) ){
-    liberator.log( "macccccccccc", -1 );
 
     //設定ファイルのパス
     liberator.globalVariables.VimpSetiingFilePath='~/.vimperatorrc';
