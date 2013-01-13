@@ -113,7 +113,8 @@ vmap <CR> <C-c><Esc><Esc>
 vmap <CR> <M-c><Esc><Esc>
 
 "igunoreモードなんていらない
-<S-Insert> nop
+map <C-n> gt
+map <C-p> gT
 
 "=============================================
 " Firefox Config
