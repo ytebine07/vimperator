@@ -112,9 +112,13 @@ vmap <CR> <C-c><Esc><Esc>
 "Mac用
 vmap <CR> <M-c><Esc><Esc>
 
-"igunoreモードなんていらない
+"タブ送りを正式にマッピング
 map <C-n> gt
 map <C-p> gT
+
+"不意にIGNOREモードにならないよう
+"明示的にignorekeysコマンドを削除
+ignorekeys clear
 
 "=============================================
 " Firefox Config
