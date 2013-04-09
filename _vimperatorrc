@@ -61,6 +61,9 @@ bmark -title="[Vimperator]Amazon" -tags=keyword -keyword=amazon http://www.amazo
 "youtubeもすぐ検索したい
 bmark -title="[Vimperator]youtube" -tags=keyword -keyword=youtube http://www.youtube.com/results?search_query=%s&oq=&gs_l=
 
+"googlemapもすぐ検索したい
+bmark -title="[Vimperator]googlemap" -tags=keyword -keyword=map https://maps.google.co.jp/maps?q=%s
+
 "自分のgithubレポジトリへすぐ移動したい
 bmark -title="[Vimperator]github" -tags=keyword -keyword=github https://github.com/ytebine07
 
