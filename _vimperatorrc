@@ -45,27 +45,7 @@ set complete=l
 "[input要素に入るとき、強制的にIMEをOFF]にしてます。
 :style -name insert-ime * input {ime-mode: inactive !important;}
 
-"デフォルト検索エンジンをY!へ
-bmark -title="Yahoo! Search" -tags=keyword -keyword=y http://search.yahoo.co.jp/search?p=%s
-set defsearch=y
 
-"Yahoo!オークションもすぐ検索したい
-bmark -title="[Vimperator]Yahoo!Auction" -tags=keyword -keyword=auc http://auctions.search.yahoo.co.jp/search?p=%s&tab_ex=commerce
-
-"Yahoo!ショッピングもすぐ検索したい
-bmark -title="[Vimperator]Yahoo!Shopping" -tags=keyword -keyword=shop http://shopping.search.yahoo.co.jp/search?p=%s&tab_ex=commerce
-
-"Amazonもすぐ検索したい
-bmark -title="[Vimperator]Amazon" -tags=keyword -keyword=amazon http://www.amazon.co.jp/gp/search/?__mk_ja_JP=%83J%83%5E%83J%83i&field-keywords=%s
-
-"youtubeもすぐ検索したい
-bmark -title="[Vimperator]youtube" -tags=keyword -keyword=youtube http://www.youtube.com/results?search_query=%s&oq=&gs_l=
-
-"googlemapもすぐ検索したい
-bmark -title="[Vimperator]googlemap" -tags=keyword -keyword=map https://maps.google.co.jp/maps?q=%s
-
-"自分のgithubレポジトリへすぐ移動したい
-bmark -title="[Vimperator]github" -tags=keyword -keyword=github https://github.com/ytebine07
 
 " URL内の数字をいじる
 mapc +
@@ -113,10 +93,12 @@ inoremap   <C-n> <C-Tab>
 set! ui.caretWidth=5
 
 "ビジュアルモード時<Enter>でコピー完了
+" win-mac それぞれの設定ファイルに移動
+" 問題なければそのうち削除
 "win用
-vmap <CR> <C-c><Esc><Esc>
+"vmap <CR> <C-c><Esc><Esc>
 "Mac用
-vmap <CR> <M-c><Esc><Esc>
+"vmap <CR> <M-c><Esc><Esc>
 
 "タブ送りを正式にマッピング
 map <C-n> gt
@@ -129,7 +111,37 @@ ignorekeys clear
 "MacでもCtrl-wでタブを閉じたい
 map <C-w> <M-w>
 
+"=============================================
+" Bookmark系
+"=============================================
+"デフォルト検索エンジンをY!へ
+bmark -title="Yahoo! Search" -tags=keyword -keyword=y http://search.yahoo.co.jp/search?p=%s
+set defsearch=y
 
+"Yahoo!オークションもすぐ検索したい
+bmark -title="[Vimperator]Yahoo!Auction" -tags=keyword -keyword=auc http://auctions.search.yahoo.co.jp/search?p=%s&tab_ex=commerce
+
+"Yahoo!ショッピングもすぐ検索したい
+bmark -title="[Vimperator]Yahoo!Shopping" -tags=keyword -keyword=shop http://shopping.search.yahoo.co.jp/search?p=%s&tab_ex=commerce
+
+"Amazonもすぐ検索したい
+bmark -title="[Vimperator]Amazon" -tags=keyword -keyword=amazon http://www.amazon.co.jp/gp/search/?__mk_ja_JP=%83J%83%5E%83J%83i&field-keywords=%s
+
+"youtubeもすぐ検索したい
+bmark -title="[Vimperator]youtube" -tags=keyword -keyword=youtube http://www.youtube.com/results?search_query=%s&oq=&gs_l=
+
+"googlemapもすぐ検索したい
+bmark -title="[Vimperator]googlemap" -tags=keyword -keyword=map https://maps.google.co.jp/maps?q=%s
+
+"自分のgithubレポジトリへすぐ移動したい
+bmark -title="[Vimperator]github" -tags=keyword -keyword=github https://github.com/ytebine07
+
+"=============================================
+" feedSomeKeys_3.js
+"=============================================
+:command! -nargs=+ lazy autocmd VimperatorEnter .* <args>
+:lazy fmap -modes=i -events=keydown,keypress <C-p> <Up>
+:lazy fmap -modes=i -events=keydown,keypress <C-n> <Down>
 
 "=============================================
 " Firefox Config
@@ -149,27 +161,27 @@ set! browser.download.manager.scanWhenDone=false
 "------------------------------------------------------
 javascript <<EOF
 commands.addUserCommand( ['rec[onfig]'], 'reload vimperatorrc',
-	function () {
-		//設定してあるマッピングを削除
-		mappings.removeAll( modes.NORMAL );
-		mappings.removeAll( modes.INSERT );
-		mappings.removeAll( modes.HINTS );
+    function () {
+        //設定してあるマッピングを削除
+        mappings.removeAll( modes.NORMAL );
+        mappings.removeAll( modes.INSERT );
+        mappings.removeAll( modes.HINTS );
 
-		//設定してあるコマンドを削除
-		commands.getUserCommands().forEach(function(cmd){
-			commands.removeUserCommand(cmd.name);
-		});
+        //設定してあるコマンドを削除
+        commands.getUserCommands().forEach(function(cmd){
+            commands.removeUserCommand(cmd.name);
+        });
 
-		//vimperatorrcを読み込み
+        //vimperatorrcを読み込み
         let vimprPath = liberator.globalVariables.VimpSetiingFilePath
         io.source(vimprPath, false);
-        
-		//プラグインの読み込み
+
+        //プラグインの読み込み
         let dir = io.File(liberator.globalVariables.VimpSettingPluginPath);
         dir.readDirectory(true).forEach(function(file){
-			io.source(file.path,	false);
-		});
-	}
+            io.source(file.path,    false);
+        });
+    }
 );
 EOF
 

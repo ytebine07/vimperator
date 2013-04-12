@@ -12,3 +12,6 @@ imap <C-;>  <M-RIGHT>
 
 "カーソルから後ろを削除
 imap <C-d>  <S-M-Right><Del>
+
+"ビジュアルモード時<Enter>でコピー完了
+vmap <CR> <M-c><Esc><Esc>
