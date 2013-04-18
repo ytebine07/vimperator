@@ -75,6 +75,7 @@ imap <C-h> <LEFT>
 imap <C-j> <DOWN>
 imap <C-k> <UP>
 imap <C-l> <RIGHT>
+imap <C-b> <LEFT>
 
 javascript <<EOF
     io.source( liberator.globalVariables.aliasFilePath );
@@ -92,14 +93,6 @@ inoremap   <C-n> <C-Tab>
 "キャレットの幅を広げて、見失わないようにする
 set! ui.caretWidth=5
 
-"ビジュアルモード時<Enter>でコピー完了
-" win-mac それぞれの設定ファイルに移動
-" 問題なければそのうち削除
-"win用
-"vmap <CR> <C-c><Esc><Esc>
-"Mac用
-"vmap <CR> <M-c><Esc><Esc>
-
 "タブ送りを正式にマッピング
 map <C-n> gt
 map <C-p> gT
@@ -107,9 +100,6 @@ map <C-p> gT
 "不意にIGNOREモードにならないよう
 "明示的にignorekeysコマンドを削除
 ignorekeys clear
-
-"MacでもCtrl-wでタブを閉じたい
-map <C-w> <M-w>
 
 "=============================================
 " Bookmark系

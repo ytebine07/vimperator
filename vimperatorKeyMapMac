@@ -15,3 +15,6 @@ imap <C-d>  <S-M-Right><Del>
 
 "ビジュアルモード時<Enter>でコピー完了
 vmap <CR> <M-c><Esc><Esc>
+
+"MacでもCtrl-wでタブを閉じたい
+map <C-w> <M-w>
