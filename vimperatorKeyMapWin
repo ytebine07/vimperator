@@ -15,3 +15,10 @@ imap <C-d>  <S-END><DEL>
 
 "ビジュアルモード時<Enter>でコピー完了
 vmap <CR> <C-c><Esc><Esc>
+
+"移動系map
+imap <C-h> <LEFT>
+imap <C-j> <DOWN>
+imap <C-k> <UP>
+imap <C-l> <RIGHT>
+imap <C-b> <LEFT>

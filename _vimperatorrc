@@ -70,13 +70,7 @@ noremap  <C-z> <S-Esc><C-z><S-Esc>
 inoremap <C-z> <S-Esc><C-z><S-Esc>
 cnoremap <C-z> <S-Esc><C-z><S-Esc>
 
-"インサートモードでの移動系マッピング
-imap <C-h> <LEFT>
-imap <C-j> <DOWN>
-imap <C-k> <UP>
-imap <C-l> <RIGHT>
-imap <C-b> <LEFT>
-
+"OS別キーマップファイルを読み込み
 javascript <<EOF
     io.source( liberator.globalVariables.aliasFilePath );
 EOF
