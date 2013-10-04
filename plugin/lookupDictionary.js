@@ -37,6 +37,12 @@ const SITE_DEFINITION = [{
     xpath: 'id("mw-content-text")/p[1]',
     dictionary: 'ja'
 },{
+    names: ['ruigi[go]'],
+    url: 'http://thesaurus.weblio.jp/content/%s',
+    shortHelp: 'Weblio類義語辞典',
+    xpath: '//td[@class="wrugjR"]',
+    dictionary: 'ja'
+},{
     names: ['wikipe[diaen]'],
     url: 'http://en.wikipedia.org/wiki/%s',
     shortHelp: 'Wikipedia lite(en)',
