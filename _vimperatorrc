@@ -120,6 +120,15 @@ bmark -title="[Vimperator]googlemap" -tags=keyword -keyword=map https://maps.goo
 "自分のgithubレポジトリへすぐ移動したい
 bmark -title="[Vimperator]github" -tags=keyword -keyword=github https://github.com/ytebine07
 
+"pixtaもすぐ検索したい
+bmark -title="[Vimperator]pixta" -tags=keyword -keyword=pixta http://pixta.jp/search?utf8=%u2713&keyword=%s&search_type=0
+
+"カカクコムもすぐ検索したい
+bmark -title="[Vimperator]カカクコム" -tags=keyword -keyword=kakaku http://kakaku.com/search_results/?query=%s
+
+"aucfan
+bmark -title="[Vimperator]aucfan" -tags=keyword -keyword=aucfan http://aucfan.com/search0?c=&search=%s&ss=&s=mix&o=t1&vmode=0&ym=l30d
+
 "=============================================
 " feedSomeKeys_3.js
 "=============================================
