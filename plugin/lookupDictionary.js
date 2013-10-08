@@ -1,4 +1,5 @@
 /**
+ *
  * ==VimperatorPlugin==
  * @name lookup dictionary (Vimperator plugin)
  * @description    Lookup words from Web dictionaries, and show the results in the bottom of the window
@@ -16,21 +17,6 @@ const SITE_DEFINITION = [{
     xpath: 'id("resultsList")',
     dictionary: 'en-US'
 },{
-    names: ['goo[dictionary]'],
-    url: 'http://dictionary.goo.ne.jp/search.php?MT=%s&kind=all&mode=0&IE=UTF-8',
-    shortHelp: 'goo \u8F9E\u66F8',
-    xpath: 'id("incontents")/*[@class="ch04" or @class="fs14" or contains(@class,"diclst")]',
-    multi: true,
-    dictionary: 'en-US',
-    srcEncode: 'EUC-jp',
-    urlEncode: 'UTF-8'
-},{
-    names: ['answers'],
-    url: 'http://www.answers.com/%s',
-    shortHelp: 'Answers.com(\u82F1\u82F1\u8F9E\u66F8)',
-    xpath: 'id("firstDs")',
-    dictionary: 'en-US'
-},{
     names: ['wikipe[diaja]'],
     url: 'http://ja.wikipedia.org/wiki/%s',
     shortHelp: 'Wikipedia lite(ja)',
@@ -43,11 +29,29 @@ const SITE_DEFINITION = [{
     xpath: '//td[@class="wrugjR"]',
     dictionary: 'ja'
 },{
-    names: ['wikipe[diaen]'],
-    url: 'http://en.wikipedia.org/wiki/%s',
-    shortHelp: 'Wikipedia lite(en)',
-    xpath: 'id("mw-content-text")/p[1]',
-    dictionary: 'en-US'
+    names: ['koku[go]'],
+    url: 'http://www.weblio.jp/content/%s',
+    shortHelp: 'weblio国語辞典',
+    xpath: 'id("cont")',
+    dictionary: 'ja'
+},{
+    names: ['zisyo'],
+    url: 'http://www.weblio.jp/content/%s',
+    shortHelp: 'weblio国語辞典',
+    xpath: 'id("cont")',
+    dictionary: 'ja'
+},{
+    names: ['eiwa'],
+    url: 'http://ejje.weblio.jp/content/%s',
+    shortHelp: 'weblio英和・和英辞典',
+    xpath: '//div[@class="kiji"]',
+    dictionary: 'ja'
+},{
+    names: ['waei'],
+    url: 'http://ejje.weblio.jp/content/%s',
+    shortHelp: 'weblio英和・和英辞典',
+    xpath: '//div[@class="kiji"]',
+    dictionary: 'ja'
 }];
 
 let (siteDef = liberator.globalVariables.lookupDictionary_site_definition) {
