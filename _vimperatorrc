@@ -129,6 +129,9 @@ bmark -title="[Vimperator]カカクコム" -tags=keyword -keyword=kakaku http://
 "aucfan
 bmark -title="[Vimperator]aucfan" -tags=keyword -keyword=aucfan http://aucfan.com/search0?c=&search=%s&ss=&s=mix&o=t1&vmode=0&ym=l30d
 
+"zozotown[bookmarkret]
+bmark -title="[Vimperator]zozotown for evernote(bookmarkret)" -tags=keyword -keyword=zozo javascript:var%20rng=window.content.document.createRange();rng.selectNodeContents(document.getElementById(\'detail\'));var%20sel=getSelection();sel.removeAllRanges();sel.addRange(rng);rng.select();
+
 "=============================================
 " feedSomeKeys_3.js
 "=============================================
